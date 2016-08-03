@@ -7,3 +7,4 @@ jerome:
   birth_date: 1900-01-01
   gender: "M"
   password_digest: <%= User.digest('password') %>
+  total: 100.0
