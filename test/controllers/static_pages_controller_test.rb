@@ -9,17 +9,16 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get schedule" do
-    get static_pages_schedule_url
+    get programmation_path
     assert_response :success
     assert_select "title", "Programmation | Club de boxe les Titans"
 
   end
 
   test "should get contact" do
-    get static_pages_contact_url
+    get contact_path
     assert_response :success
     assert_select "title", "Contact | Club de boxe les Titans"
-
   end
 
 end

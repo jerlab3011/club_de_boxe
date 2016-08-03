@@ -1,5 +1,14 @@
-<h1>Club de boxe les Titans</h1>
-<p>
-  Ceci est la page d'accueil pour l'application du
-  <a href="http://www.clubdeboxelestitans.com/">Club de boxe les Titans</a>
-  créée par Jérôme Labonté
+<div class="center jumbotron">
+  <h1>Club de boxe les Titans</h1>
+
+  <h2>
+    Ceci est la page d'accueil pour l'application du
+    <a href="http://www.clubdeboxelestitans.com/">Club de boxe les Titans</a>
+    créée par Jérôme Labonté
+  </h2>
+
+  <%= link_to "Inscrivez-vous maintenant!", inscription_path, class: "btn btn-lg btn-primary" %>
+</div>
+
+<%= link_to image_tag("titans.jpg", height: 100, alt: "Logo Titans"),
+            'http://clubdeboxelestitans.com/' %>
