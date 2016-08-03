@@ -20,7 +20,7 @@ test "valid signup information" do
     assert_difference 'User.count', 1 do
       post users_path, params: { user: { name:  "Example User",
                                          email: "user@example.com",
-                                         adress: "1234 Adresse",
+                                         address: "1234 Adresse",
                                          phone: "514-123-4567",
                                          postal_code: "H0H 0H0",
                                          gender: "M",

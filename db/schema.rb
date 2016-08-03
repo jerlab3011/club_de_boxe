@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20160803145536) do
     t.string   "name"
     t.string   "email"
     t.string   "phone"
-    t.string   "adress"
+    t.string   "address"
     t.string   "postal_code"
     t.date     "birth_date"
     t.datetime "created_at",      null: false

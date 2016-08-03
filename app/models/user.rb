@@ -9,7 +9,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   VALID_PHONE_REGEX = /\A\(?\d{3}\)?\s?-?\d{3}-?\d{4}\z/
   validates :phone, presence: true, format: {with: VALID_PHONE_REGEX }
-  validates :adress, presence: true, length: { maximum: 255 }
+  validates :address, presence: true, length: { maximum: 255 }
   VALID_POSTAL_CODE_REGEX = /\A[a-z]\d[a-z]\s?\d[a-z]\d\z/i
   validates :postal_code, presence: true, format: {with: VALID_POSTAL_CODE_REGEX }
   validates :birth_date, presence: true

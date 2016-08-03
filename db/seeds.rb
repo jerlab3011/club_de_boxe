@@ -5,4 +5,26 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(name: "Jérôme Labonté", email: "jeromelabonte@hotmail.com", phone: "438-820-8789", adress: "8423 rue Berri", postal_code:"H2P 2G3", birth_date: "30-11-1984", gender: "M", password:"foobar", password_confirmation:"foobar")
+User.create(name: "Jérôme Labonté", email: "jeromelabonte@hotmail.com", 
+phone: "438-820-8789", address: "8423 rue Berri", postal_code:"H2P 2G3", 
+birth_date: "30-11-1984", gender: "M", 
+password:"foobar", password_confirmation:"foobar")
+
+99.times do |n|
+  name  = Faker::Name.name
+  email = "example-#{n+1}@railstutorial.org"
+  phone = "514-123-1234"
+  password = "password"
+  date = Faker::Date.between(70.year.ago, 6.years.ago)
+  address = Faker::Address.street_address
+  
+  User.create!(name:  name,
+               email: email,
+               phone: phone,
+               address: address,
+               postal_code: "H0H 0H0",
+               birth_date: date,
+               gender: "M",
+               password:              password,
+               password_confirmation: password)
+end

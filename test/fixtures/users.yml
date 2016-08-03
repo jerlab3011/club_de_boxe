@@ -1,10 +1,21 @@
 jerome:
   name: Jerome Exemple
   email: jerome@example.com
-  adress: Mon adresse
+  address: Mon adresse
   postal_code: H0H 0H0
   phone: 514-000-0000
   birth_date: 1900-01-01
   gender: "M"
   password_digest: <%= User.digest('password') %>
   total: 100.0
+
+archer:
+  name: Sterling Archer
+  email: archer@example.com
+  address: Mon adresse
+  postal_code: H0H 0H0
+  phone: 514-000-0000
+  birth_date: 1900-01-01
+  gender: "M"
+  password_digest: <%= User.digest('password') %>
+  total: 0.0
