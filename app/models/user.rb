@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :postal_code, presence: true, format: {with: VALID_POSTAL_CODE_REGEX }
   validates :birth_date, presence: true
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
   VALID_GENDER_REGEX = /\A[MF]\z/
   validates :gender, presence: true, format: {with: VALID_GENDER_REGEX}
   

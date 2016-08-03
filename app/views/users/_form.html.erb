@@ -1,0 +1,37 @@
+<%= form_for(@user, url: inscription_path) do |f| %>
+  <%= render 'shared/error_messages' %>
+  
+  <%= f.label :name, "Nom" %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :email, "Courriel" %>
+  <%= f.email_field :email, class: 'form-control' %>
+
+  <%= f.label :adress, "Adresse" %>
+  <%= f.text_field :adress, class: 'form-control' %>
+  
+  <%= f.label :postal_code, "Code postal" %>
+  <%= f.text_field :postal_code, class: 'form-control' %>
+  
+  <%= f.label :phone, "Téléphone" %>
+  <%= f.text_field :phone, class: 'form-control' %>
+  
+  <div class="form-inline">
+    <%= f.label :gender, "Sexe : " %>
+    <%= f.radio_button :gender, "M", class: 'form-control' %>
+    <%= label :gender_M, 'Homme' %>
+    <%= f.radio_button :gender, "F", class: 'form-control' %>
+    <%= label :gender_F, 'Femme' %>
+  </div>
+
+  <%= f.label :birth_date, "Date de naissance" %>
+  <%= f.date_field :birth_date, class: 'form-control' %>
+
+  <%= f.label :password, "Mot de passe" %>
+  <%= f.password_field :password , class: 'form-control' %>
+
+  <%= f.label :password_confirmation, "Confirmation" %>
+  <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+  <%= f.submit "Créer mon compte", class: "btn btn-primary" %>
+<% end %>
