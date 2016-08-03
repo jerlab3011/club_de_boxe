@@ -13,4 +13,6 @@ class User < ApplicationRecord
   validates :birth_date, presence: true
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+  VALID_GENDER_REGEX = /\A[MF]\z/
+  validates :gender, presence: true, format: {with: VALID_GENDER_REGEX}
 end
