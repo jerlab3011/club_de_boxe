@@ -5,7 +5,23 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "Accueil",   root_path %></li>
         <li><%= link_to "Programmation",   programmation_path %></li>
-        <li><%= link_to "Se connecter", '#' %></li>
+        <% if logged_in? %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Mon compte <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Profil", current_user %></li>
+              <li><%= link_to "Modifier mes informations", '#' %></li>
+              <li class="divider"></li>
+              <li>
+                <%= link_to "Déconnexion", deconnexion_path, method: "delete" %>
+              </li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to "Connexion", connexion_path %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
