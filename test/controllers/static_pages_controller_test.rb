@@ -4,7 +4,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test "should get home" do
     get root_path
     assert_response :success
-    assert_select "title", "Accueil | Club de boxe les Titans"
+    assert_select "title", "Club de boxe les Titans"
 
   end
 
