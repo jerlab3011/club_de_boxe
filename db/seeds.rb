@@ -5,10 +5,32 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.create(first_name: "Jérôme", last_name: "Labonté", email: "jeromelabonte@hotmail.com", 
-phone: "438-820-8789", address: "8423 rue Berri", postal_code:"H2P 2G3", 
-birth_date: "30-11-1984", gender: "M", 
-password:"foobar", password_confirmation:"foobar", admin: true)
+User.create(first_name: "Jérôme", 
+            last_name: "Labonté", 
+            email: "jeromelabonte@hotmail.com",
+            phone: "438-820-8789", 
+            address: "8423 rue Berri", 
+            postal_code:"H2P 2G3", 
+            birth_date: "30-11-1984", 
+            gender: "M", 
+            password:"foobar", 
+            password_confirmation:"foobar", 
+            admin: true,
+            activated: true,
+            activated_at: Time.zone.now)
+
+User.create(first_name: "Émilie", 
+            last_name: "De Grandpré", 
+            email: "emilie.masso@hotmail.ca", 
+            phone: "438-820-8789", 
+            address: "8423 rue Berri", 
+            postal_code:"H2P 2G3", 
+            birth_date: "02-04-1989", 
+            gender: "F", 
+            password:"foobar", 
+            password_confirmation:"foobar", 
+            activated: true,
+            activated_at: Time.zone.now)
 
 99.times do |n|
   first_name  = Faker::Name.first_name
@@ -28,5 +50,7 @@ password:"foobar", password_confirmation:"foobar", admin: true)
                birth_date: date,
                gender: "M",
                password:              password,
-               password_confirmation: password)
+               password_confirmation: password,
+               activated: true,
+               activated_at: Time.zone.now)
 end

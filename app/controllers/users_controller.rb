@@ -18,9 +18,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      log_in @user
-      flash[:success] = "Bienvenue au club de boxe les Titans !"
-      redirect_to @user
+      @user.send_activation_email
+      flash[:info] = "Svp veuillez vérifier vos courriels pour activer votre compte. Cela peut prendre quelques minutes."
+      redirect_to root_url
     else
       render 'new'
     end
@@ -33,7 +33,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
+      flash[:success] = "Profil sauvegardé"
       redirect_to @user
     else
       render 'edit'
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
     def logged_in_user
       unless logged_in?
         store_location
-        flash[:danger] = "Please log in."
+        flash[:danger] = "Veuillez svp vous connecter."
         redirect_to connexion_url
       end
     end

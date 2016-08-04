@@ -10,6 +10,8 @@ jerome:
   password_digest: <%= User.digest('password') %>
   admin: true
   total: 100.0
+  activated: true
+  activated_at: Time.zone.now
 
 archer:
   first_name: Sterling
@@ -22,6 +24,8 @@ archer:
   gender: "M"
   password_digest: <%= User.digest('password') %>
   total: 0.0
+  activated: true
+  activated_at: Time.zone.now
   
 
 <% 30.times do |n| %>
@@ -36,4 +40,6 @@ user_<%= n %>:
   gender: "M"
   password_digest: <%= User.digest('password') %>
   total: 0.0
+  activated: true
+  activated_at: Time.zone.now
 <% end %>

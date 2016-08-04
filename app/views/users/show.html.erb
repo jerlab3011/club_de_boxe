@@ -3,11 +3,17 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <h1>
-<%= @user.full_name %>
-      </h1>
-      Membre depuis : <%= @user.created_at %> </br>
-      Solde dû : <%= "%.2f" % @user.total %> $
+      <h1><%= @user.full_name %></h1>
+      <%= link_to "Modifier", edit_user_path(@user) %>
+      <% if current_user.admin? && !current_user?(@user) %>
+        | <%= link_to "supprimer", @user, method: :delete,
+           data: { confirm: "Êtes vous certain de vouloir supprimer ce compte ?" } %>
+      <% end %>
+      <p>
+        Membre depuis : <%= @user.created_at %> </br>
+        Solde dû : <%= "%.2f" % @user.total %> $
+      </p>
+
     </section>
   </aside>
 </div>
