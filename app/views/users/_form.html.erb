@@ -1,8 +1,11 @@
 <%= form_for(@user, url: inscription_path) do |f| %>
   <%= render 'shared/error_messages' %>
   
-  <%= f.label :name, "Nom" %>
-  <%= f.text_field :name, class: 'form-control' %>
+  <%= f.label :first_name, "Prénom" %>
+  <%= f.text_field :first_name, class: 'form-control' %>
+  
+    <%= f.label :last_name, "Nom" %>
+  <%= f.text_field :last_name, class: 'form-control' %>
 
   <%= f.label :email, "Courriel" %>
   <%= f.email_field :email, class: 'form-control' %>
