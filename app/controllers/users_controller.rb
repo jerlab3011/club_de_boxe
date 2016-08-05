@@ -9,6 +9,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @memberships = @user.memberships.paginate(page: params[:page])
+    @membership = @user.memberships.build
   end
 
   def new
@@ -53,14 +55,6 @@ class UsersController < ApplicationController
       :gender, :birth_date, :password, :password_confirmation)
     end
     
-    # Confirms a logged-in user.
-    def logged_in_user
-      unless logged_in?
-        store_location
-        flash[:danger] = "Veuillez svp vous connecter."
-        redirect_to connexion_url
-      end
-    end
 
     def correct_user
       @user = User.find(params[:id])

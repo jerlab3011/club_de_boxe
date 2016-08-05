@@ -1,7 +1,6 @@
 
 <% provide(:title, @user.full_name) %>
 <div class="row">
-  <aside class="col-md-4">
     <section class="user_info">
       <h1><%= @user.full_name %></h1>
       <%= link_to "Modifier", edit_user_path(@user) %>
@@ -9,11 +8,21 @@
         | <%= link_to "supprimer", @user, method: :delete,
            data: { confirm: "Êtes vous certain de vouloir supprimer ce compte ?" } %>
       <% end %>
-      <p>
-        Membre depuis : <%= @user.created_at %> </br>
-        Solde dû : <%= "%.2f" % @user.total %> $
-      </p>
-
+      <p> Membre depuis : <%= @user.created_at %> </p>
     </section>
-  </aside>
+    <div class="row">
+        <section class="membership_form">
+          <%= render 'shared/membership_form' %>
+        </section>
+    </div>
+    <div class="col-md-8">
+      <% if @user.memberships.any? %>
+        <h3>Abonnements</h3>
+        <ol class="memberships">
+          <%= render @memberships %>
+        </ol>
+        <%= will_paginate @memberships %>
+      <% end %>
+    </div>
+    <p> </p>Solde dû : <%= "%.2f" % @user.total %> $ </p>
 </div>

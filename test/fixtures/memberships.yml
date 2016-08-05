@@ -1,0 +1,32 @@
+first_long:
+  description: "12 mois illimité"
+  user_id: 3
+  duration: 12
+  price: 120.00
+  start_date: 2.years.ago
+  end_date: 1.year.ago
+  
+
+first_short:
+  description: "1 mois illimité"
+  user_id: 2
+  duration: 1
+  price: 40.00
+  start_date: 13.months.ago
+  end_date: 12.months.ago
+
+last_short:
+  description: "3 mois illimité"
+  user_id: 3
+  duration: 3
+  price: 70.00
+  start_date: 6.months.ago
+  end_date: 3.months.ago
+
+most_recent:
+  description: "12 mois 1 fois semaine"
+  user_id: 2
+  duration: 12
+  price: 100.00
+  start_date: 1.year.ago
+  end_date: Time.now

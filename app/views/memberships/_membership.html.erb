@@ -1,0 +1,20 @@
+<li id="membership-<%= membership.id %>">
+  <span class="user"><%= link_to membership.user.full_name, membership.user %></span>
+  <span class="description"><%= membership.description %>, <%= membership.duration %> mois</span>
+  <span class="price"><%= membership.price %> $</span>
+  <span class="timestamp">
+    Début : <%= membership.start_date %>
+  </span>
+  <% if membership.end_date < Date.today %>
+    <span class="expired-membership">
+          Expiré le : <%= membership.end_date %>
+    </span>
+  <% else %>
+      <span class="active-membership">
+        Expiration : <%= membership.end_date %>
+      </span>
+  <% end %>
+  <span class="timestamp">
+    Créé le <%= membership.created_at %>.
+  </span>
+</li>

@@ -21,7 +21,7 @@ User.create(first_name: "Jérôme",
 
 User.create(first_name: "Émilie", 
             last_name: "De Grandpré", 
-            email: "emilie.masso@hotmail.ca", 
+            email: "emilie.masso@example.com", 
             phone: "438-820-8789", 
             address: "8423 rue Berri", 
             postal_code:"H2P 2G3", 
@@ -53,4 +53,13 @@ User.create(first_name: "Émilie",
                password_confirmation: password,
                activated: true,
                activated_at: Time.zone.now)
+end
+
+users = User.order(:created_at).take(6)
+10.times do
+  description = ["Illimité", "1 fois/semaine"].sample
+  duration = [3, 6, 12].sample
+  start_date = Faker::Date.between(2.years.ago, Date.today)
+  users.each { |user| user.memberships.create!(description: description,
+  duration: duration, start_date: start_date) }
 end
