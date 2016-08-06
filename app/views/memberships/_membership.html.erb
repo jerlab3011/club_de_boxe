@@ -17,4 +17,6 @@
   <span class="timestamp">
     Créé le <%= membership.created_at %>.
   </span>
+  <span class="creator"> par : <%= User.find(membership.created_by).full_name %></span>
+  
 </li>

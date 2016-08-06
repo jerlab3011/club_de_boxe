@@ -61,5 +61,5 @@ users = User.order(:created_at).take(6)
   duration = [3, 6, 12].sample
   start_date = Faker::Date.between(2.years.ago, Date.today)
   users.each { |user| user.memberships.create!(description: description,
-  duration: duration, start_date: start_date) }
+  duration: duration, start_date: start_date, created_by:1) }
 end

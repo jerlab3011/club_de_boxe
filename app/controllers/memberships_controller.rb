@@ -1,13 +1,15 @@
 class MembershipsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
+  
 
   def create
-    @membership = current_user.memberships.build(membership_params)
-    @user = current_user
+    @user = User.find(params[:user_id])
+    @membership = @user.memberships.build(membership_params)
     if @membership.save
       flash[:success] = "Abonnement créé!"
-      current_user.update_column("total", current_user.total + @membership.reload.price)
-      redirect_to current_user
+      @membership.update_column("created_by", current_user.id)
+      @user.update_column("total", @user.total + @membership.reload.price)
+      redirect_to @user
     else
       redirect_to @user
     end

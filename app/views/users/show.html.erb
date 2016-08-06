@@ -10,19 +10,22 @@
       <% end %>
       <p> Membre depuis : <%= @user.created_at %> </p>
     </section>
-    <div class="row">
-        <section class="membership_form">
-          <%= render 'shared/membership_form' %>
-        </section>
-    </div>
-    <div class="col-md-8">
-      <% if @user.memberships.any? %>
-        <h3>Abonnements</h3>
-        <ol class="memberships">
-          <%= render @memberships %>
-        </ol>
-        <%= will_paginate @memberships %>
-      <% end %>
-    </div>
-    <p> </p>Solde dû : <%= "%.2f" % @user.total %> $ </p>
+    <% if current_user.admin? && !@user.admin? %>
+      <div class="row">
+          
+          <section class="membership_form">
+            <%= render 'shared/membership_form' %>
+          </section>
+      </div>
+      <div class="col-md-8">
+        <% if @user.memberships.any? %>
+          <h3>Abonnements</h3>
+          <ol class="memberships">
+            <%= render @memberships %>
+          </ol>
+          <%= will_paginate @memberships %>
+        <% end %>
+      </div>
+      <p> </p>Solde dû : <%= "%.2f" % @user.total %> $ </p>
+    <% end %>
 </div>
