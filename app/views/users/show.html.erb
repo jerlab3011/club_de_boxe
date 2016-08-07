@@ -1,7 +1,7 @@
 
 <% provide(:title, @user.full_name) %>
 <div class="row">
-  <% if current_user.admin? && !@user.admin? %>
+  <% if !@user.admin? %>
     <section class="user_info">
       <h1><%= @user.full_name %></h1>
       <%= link_to "Modifier", edit_user_path(@user) %>
@@ -16,6 +16,7 @@
       <p> Sexe : <%= @user.gender %> </p>
       <p> Membre depuis : <%= @user.created_at %> </p>
     </section>
+    <% if current_user.admin? && !@user.admin? %>
       <div class="row">
           <section class="membership_form">
             <%= render 'shared/membership_form' %>
@@ -26,6 +27,7 @@
             <%= render 'shared/payment_form' %>
           </section>
       </div>
+      <% end %>
       <p> </p>Solde dû : <%= "%.2f" % @user.total %> $ </p>
       <% if @user.memberships.any? %>
         <div class="col-md-8">
