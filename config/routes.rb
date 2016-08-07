@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'payments/create'
+
+  get 'payments/destroy'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -16,4 +20,5 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :memberships,         only: [:create, :destroy]
+  resources :payments,            only: [:create, :destroy]
 end

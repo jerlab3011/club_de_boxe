@@ -1,5 +1,6 @@
 class MembershipsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
+  before_action :admin_user,     only: [:create, :destroy]
   
 
   def create
@@ -16,6 +17,12 @@ class MembershipsController < ApplicationController
   end
 
   def destroy
+    @membership = Membership.find(params[:id])
+    @user = User.find(@membership.user_id)
+    @user.update_column("total", @user.total - @membership.price)
+    @membership.destroy
+    flash[:success] = "Abonnement supprimé"
+    redirect_to user_path(@user)
   end
   
   private

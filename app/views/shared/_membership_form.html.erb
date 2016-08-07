@@ -1,15 +1,13 @@
 <%= form_for(@membership) do |f| %>
   <div><%= hidden_field_tag :user_id, @user.id %></div>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
+  <span class="field", display:inline>
     <%= f.label :description, "Type d'abonnement" %>
-    <%= f.select :description, Membership::DESCRIPTIONS %>
-    
+    <%= f.select :description, Membership::DESCRIPTIONS, class: 'form-control' %>
     <%= f.label :duration, "Durée de l'abonnement" %>
-    <%= f.select :duration, Membership::DURATIONS%>
-
+    <%= f.select :duration, Membership::DURATIONS, class: 'form-control' %>
     <%= f.label :start_date, "Date de début" %>
     <%= f.date_field :start_date, class: 'form-control', :value=>Date.today %>
-  </div>
+  </span>
   <%= f.submit "Créer abonnement", class: "btn btn-primary" %>
 <% end %>

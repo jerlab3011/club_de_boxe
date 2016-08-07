@@ -1,0 +1,14 @@
+<li id="payment-<%= payment.id %>">
+  <span class="user"><%= link_to payment.user.full_name, payment.user %></span>
+  <span class="description"><%= payment.description %>, <%= "%.2f" % payment.amount %> $</span>
+  <span class="timestamp">
+    Créé le <%= payment.created_at %>.
+  </span>
+  <span class="creator"> par : <%= User.find(payment.created_by).full_name %></span>
+  <span>
+  <% if current_user.admin? %>
+  <%= link_to "supprimer", payment, method: :delete,
+    data: { confirm: "Êtes vous certain de vouloir supprimer ce paiement ?" } %>
+  <% end %>
+  </span>
+</li>

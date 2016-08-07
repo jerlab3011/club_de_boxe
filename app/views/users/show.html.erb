@@ -1,6 +1,7 @@
 
 <% provide(:title, @user.full_name) %>
 <div class="row">
+  <% if current_user.admin? && !@user.admin? %>
     <section class="user_info">
       <h1><%= @user.full_name %></h1>
       <%= link_to "Modifier", edit_user_path(@user) %>
@@ -8,24 +9,41 @@
         | <%= link_to "supprimer", @user, method: :delete,
            data: { confirm: "Êtes vous certain de vouloir supprimer ce compte ?" } %>
       <% end %>
+      
+      <p> Adresse : <%= @user.address %>, <%= @user.postal_code %> </p>
+      <p> Téléphone : <%= @user.phone %> </p>
+      <p> Date de naissance : <%= @user.birth_date %> </p>
+      <p> Sexe : <%= @user.gender %> </p>
       <p> Membre depuis : <%= @user.created_at %> </p>
     </section>
-    <% if current_user.admin? && !@user.admin? %>
       <div class="row">
-          
           <section class="membership_form">
             <%= render 'shared/membership_form' %>
           </section>
       </div>
-      <div class="col-md-8">
-        <% if @user.memberships.any? %>
-          <h3>Abonnements</h3>
-          <ol class="memberships">
-            <%= render @memberships %>
-          </ol>
-          <%= will_paginate @memberships %>
-        <% end %>
+      <div class="row">
+          <section class="payment_form">
+            <%= render 'shared/payment_form' %>
+          </section>
       </div>
       <p> </p>Solde dû : <%= "%.2f" % @user.total %> $ </p>
+      <% if @user.memberships.any? %>
+        <div class="col-md-8">
+            <h3>Abonnements</h3>
+            <ol class="memberships">
+              <%= render @memberships %>
+            </ol>
+            <%= will_paginate @memberships %>
+        </div>
+      <% end %>
+      <% if @user.payments.any? %>
+        <div class="col-md-8">
+            <h3>Paiements</h3>
+            <ol class="payments">
+              <%= render @payments %>
+            </ol>
+            <%= will_paginate @payments %>
+        </div>
+      <% end %>
     <% end %>
 </div>

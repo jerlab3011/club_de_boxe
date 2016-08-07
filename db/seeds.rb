@@ -56,7 +56,7 @@ User.create(first_name: "Émilie",
 end
 
 users = User.order(:created_at).take(6)
-10.times do
+5.times do
   description = ["Illimité", "1 fois/semaine"].sample
   duration = [3, 6, 12].sample
   start_date = Faker::Date.between(2.years.ago, Date.today)
