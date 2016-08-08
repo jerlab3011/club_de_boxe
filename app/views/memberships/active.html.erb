@@ -1,8 +1,6 @@
 <% provide(:title, 'Abonnements actifs') %>
 <h1>Abonnements actifs (<%= @memberships.count %>)</h1>
 
-<%= will_paginate %>
-
 <ul class="memberships">
   <% @memberships.each do |membership| %>
   <li id="membership-<%= membership.id %>">
@@ -20,5 +18,3 @@
   </li>
   <% end %>
 </ul>
-
-<%= will_paginate %>

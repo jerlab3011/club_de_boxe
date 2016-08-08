@@ -1,6 +1,6 @@
 class Membership < ApplicationRecord
   belongs_to :user
-  default_scope -> { order(end_date: :desc) }
+  default_scope -> { order({end_date: :desc}) }
   
   before_save :set_end_date, :set_price
   

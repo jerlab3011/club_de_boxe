@@ -26,7 +26,8 @@ class MembershipsController < ApplicationController
   end
   
   def active
-    @memberships = Membership.where("end_date > ? AND start_date <= ?", Date.today, Date.today).paginate(page: params[:page])
+    @memberships = Membership.where("end_date > ? AND start_date <= ?", Date.today, Date.today)
+    @memberships = @memberships.sort_by {|member| member.user.last_name}
   end
   
   private
