@@ -1,6 +1,6 @@
 class MembershipsController < ApplicationController
-  before_action :logged_in_user, only: [:create, :destroy]
-  before_action :admin_user,     only: [:create, :destroy]
+  before_action :logged_in_user, only: [:create, :destroy, :index]
+  before_action :admin_user,     only: [:create, :destroy, :index]
   
 
   def create
@@ -23,6 +23,10 @@ class MembershipsController < ApplicationController
     @membership.destroy
     flash[:success] = "Abonnement supprimé"
     redirect_to user_path(@user)
+  end
+  
+  def active
+    @memberships = Membership.where("end_date > ? AND start_date <= ?", Date.today, Date.today).paginate(page: params[:page])
   end
   
   private

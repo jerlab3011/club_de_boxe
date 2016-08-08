@@ -1,10 +1,18 @@
 <% provide(:title, 'Tous les utilisateurs') %>
 <h1>Tous les utilisateurs</h1>
 
+<%= form_tag(users_path, :method => "get", id: "search-form") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Recherche par nom ou courriel" %>
+<%= submit_tag "Rechercher" %>
+<% end %>
 <%= will_paginate %>
 
 <ul class="users">
+<% if @users.present? %>
   <%= render @users %>
+<% else %>
+  <p> Il n'y a aucun utilisateur correspondant à la recherche : <%= params[:search] %>.</p>
+<% end %>
 </ul>
 
 <%= will_paginate %>

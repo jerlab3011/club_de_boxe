@@ -92,4 +92,8 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
   
+  def self.search(search)
+    where("first_name LIKE ? OR last_name LIKE ? OR email LIKE ?", 
+    "%#{search}%", "%#{search}%", "%#{search}%")
+  end
 end

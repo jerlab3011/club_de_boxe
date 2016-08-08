@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get    '/connexion',   to: 'sessions#new'
   post   '/connexion',   to: 'sessions#create'
   delete '/deconnexion',  to: 'sessions#destroy'
+  get '/abonnements_actifs', to: 'memberships#active'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

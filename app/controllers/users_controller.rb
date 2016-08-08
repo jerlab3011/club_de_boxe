@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: [:index, :destroy]
 
   def index
-    @users = User.paginate(page: params[:page])
+    if params[:search]
+      @users = User.search(params[:search]).paginate(page: params[:page])
+    else  
+      @users = User.paginate(page: params[:page])
+    end
   end
 
   def show
@@ -55,7 +59,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:last_name, :first_name, :email, :address, :postal_code, :phone,
-      :gender, :birth_date, :password, :password_confirmation)
+      :gender, :birth_date, :password, :password_confirmation, :search)
     end
     
 
