@@ -54,6 +54,10 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
   
+  def stats
+    @users = User.all
+  end
+  
   
   private
 

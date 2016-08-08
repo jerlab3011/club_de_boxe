@@ -2,10 +2,14 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
+    <%= javascript_include_tag "path/to/highcharts.js", "chartkick" %>
+    <%= stylesheet_link_tag 'http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css' %>
+    <%= javascript_include_tag 'http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js' %>
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all',
                                               'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
     <%= render 'layouts/shim' %>
   </head>
   <body>
