@@ -13,12 +13,11 @@ Rails.application.routes.draw do
   get '/inscription', to: 'users#new'
   get  '/programmation',    to: 'static_pages#schedule'
   get  '/contact',   to: 'static_pages#contact'
+  get   '/statistiques', to: 'static_pages#stats'
   get    '/connexion',   to: 'sessions#new'
   post   '/connexion',   to: 'sessions#create'
   delete '/deconnexion',  to: 'sessions#destroy'
   get '/abonnements_actifs', to: 'memberships#active'
-  get '/users_stats', to: 'users#stats'
-  get '/memberships_stats', to: 'memberships#stats'
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

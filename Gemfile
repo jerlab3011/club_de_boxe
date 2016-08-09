@@ -14,7 +14,7 @@ gem 'jquery-rails', '4.1.1'
 gem 'turbolinks',   '5.0.0'
 gem 'jbuilder',     '2.4.1'
 gem 'chartkick'
-gem 'groupdate', '~> 2.1.1'
+gem 'dateslices'
 
 group :development, :test do
   gem 'sqlite3', '1.3.11'

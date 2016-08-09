@@ -53,12 +53,7 @@ class UsersController < ApplicationController
     flash[:success] = "Compte supprimé"
     redirect_to users_url
   end
-  
-  def stats
-    @users = User.all
-  end
-  
-  
+
   private
 
     def user_params

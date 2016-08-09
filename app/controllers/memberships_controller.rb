@@ -30,10 +30,6 @@ class MembershipsController < ApplicationController
     @memberships = @memberships.sort_by {|member| member.user.last_name}
   end
   
-  def stats
-    @memberships = Membership.all
-  end
-  
   private
 
     def membership_params
