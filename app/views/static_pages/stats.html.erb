@@ -67,7 +67,7 @@
   <!-- Line Chart - Single Series -->
   <div class="col-xs-6">
     <h3>Utilisateurs par genre</h3>
-    <%= pie_chart @users.group(:gender).count %>
+    <%= pie_chart @users.unscoped.group(:gender).count %>
   </div>
 
 </div>
