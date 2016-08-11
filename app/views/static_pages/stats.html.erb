@@ -1,73 +1,94 @@
-
-<div class="row">
-
-  <!-- Line Chart - Single Series -->
-  <div class="col-xs-6">
-    <h3>Revenu par mois</h3>
-    <%= bar_chart @memberships.unscoped.group_by_month(:start_date, "sum", "price") %>
+<% provide(:title, "Statistiques") %>
+<div class= "info">
+  <h1>Statistiques</h1>
+  <div class="row">
+  
+    <!-- Line Chart - Single Series -->
+    <div class="col-xs-6">
+      <h3>Revenu par mois</h3>
+      <%= bar_chart @memberships.unscoped.group_by_month(:start_date, "sum", "price") %>
+    </div>
+  
   </div>
-
-</div>
-
-<div class="row">
-
-  <!-- Line Chart - Single Series -->
-  <div class="col-xs-6">
-    <h3>Nombre de nouveaux abonnements par mois</h3>
-    <%= bar_chart @memberships.unscoped.group_by_month(:start_date, "count") %>
+  
+  <div class="row">
+    
+    <div class="col-xs-6">
+      <h3>Revenu par année</h3>
+      <%= bar_chart @memberships.unscoped.group_by_year(:start_date, "sum", "price") %>
+    </div>
+  
   </div>
-
-</div>
-
-<div class="row">
-
-  <!-- Line Chart - Single Series -->
-  <div class="col-xs-6">
-    <h3>Abonnements par type</h3>
-    <%= pie_chart @memberships.unscoped.group(:description).count %>
-
+  
+  <div class="row">
+  
+    <!-- Line Chart - Single Series -->
+    <div class="col-xs-6">
+      <h3>Nombre de nouveaux abonnements par mois</h3>
+      <%= bar_chart @memberships.unscoped.group_by_month(:start_date, "count") %>
+    </div>
+    
   </div>
-
-</div>
-
-<div class="row">
-
-  <!-- Line Chart - Single Series -->
-  <div class="col-xs-6">
-    <h3>Abonnements actifs par type</h3>
-    <%= pie_chart @active_memberships.unscoped.group(:description).count %>
-
+  
+  <div class="row">
+    
+    <div class="col-xs-6">
+      <h3>Nombre de nouveaux abonnements par année</h3>
+      <%= bar_chart @memberships.unscoped.group_by_year(:start_date, "count") %>
+    </div>
+    
   </div>
-
-</div>
-
-<div class="row">
-
-  <!-- Line Chart - Single Series -->
-  <div class="col-xs-6">
-    <h3>Abonnements par durée</h3>
-    <%= pie_chart @memberships.unscoped.group(:duration).count %>
+  
+  <div class="row">
+  
+    <!-- Line Chart - Single Series -->
+    <div class="col-xs-6">
+      <h3>Abonnements par type</h3>
+      <%= pie_chart @memberships.group(:description).count %>
+  
+    </div>
+  
+    <!-- Line Chart - Single Series -->
+    <div class="col-xs-6">
+      <h3>Abonnements actifs par type</h3>
+      <%= pie_chart @active_memberships.group(:description).count %>
+  
+    </div>
+  
   </div>
-
-</div>
-
-<div class="row">
-
-  <!-- Line Chart - Single Series -->
-  <div class="col-xs-6">
-    <h3>Abonnements actifs par durée</h3>
-    <%= pie_chart @active_memberships.unscoped.group(:duration).count %>
+  
+  <div class="row">
+  
+    <!-- Line Chart - Single Series -->
+    <div class="col-xs-6">
+      <h3>Abonnements par durée</h3>
+      <%= pie_chart @memberships.group(:duration).count %>
+    </div>
+  
+  
+    <!-- Line Chart - Single Series -->
+    <div class="col-xs-6">
+      <h3>Abonnements actifs par durée</h3>
+      <%= pie_chart @active_memberships.group(:duration).count %>
+    </div>
+  
   </div>
-
-</div>
-
-
-<div class="row">
-
-  <!-- Line Chart - Single Series -->
-  <div class="col-xs-6">
-    <h3>Utilisateurs par genre</h3>
-    <%= pie_chart @users.unscoped.group(:gender).count %>
+  
+  
+  <div class="row">
+  
+    <!-- Line Chart - Single Series -->
+    <div class="col-xs-6">
+      <h3>Utilisateurs par genre</h3>
+      <%= pie_chart @users.group(:gender).count %>
+    </div>
+    
+      <!-- Line Chart - Single Series -->
+    <div class="col-xs-6">
+      <h3>Utilisateurs actis par genre</h3>
+      <%= pie_chart @active_users.group(:gender).count %>
+    </div>
+  
+  
   </div>
-
 </div>

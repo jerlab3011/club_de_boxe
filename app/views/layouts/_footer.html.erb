@@ -1,11 +1,13 @@
 <footer class="footer">
-  <small>
-    <a href="http://www.clubdeboxelestitans.com/" target="_blank">Club de boxe les Titans</a>
-  </small>
   <nav>
+    <small>
+      Site créé par : <a href="mailto:jeromelabonte@hotmail.com?Subject=Message%20via%20club%boxe" target="_top">Jérôme Labonté</a>
+    </small>
     <ul>
-      <li><%= link_to "Contact", contact_path %></li>
-      <li><a href="http://www.centreperemarquette.ca/" target="_blank">Centre père marquette</a></li>
+      <li><%= link_to image_tag("titans.jpg", height: 75, alt: "Logo Titans"),
+            'http://www.clubdeboxelestitans.com/'%> </li>
+      <li><%= link_to image_tag("logo-cpm.png", height: 75, alt: "Logo Centre Pere-Marquette"),
+            'http://www.centreperemarquette.ca/'%> </li>
     </ul>
   </nav>
 </footer>

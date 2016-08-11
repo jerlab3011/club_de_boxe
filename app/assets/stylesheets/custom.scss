@@ -14,8 +14,13 @@ $gray-medium-light: #eaeaea;
 
 /* universal */
 
+
 body {
-  padding-top: 60px;
+  padding-top: 65px;
+  background-image: url("https://lh4.ggpht.com/iSiHeDExbQ5FNmNca5BB26FGLNShYdEUxkXwCrgsqvESU7pUgDG7VWKi8p_IlZ42yN9k=h900");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-attachment: fixed;
 }
 
 section {
@@ -33,7 +38,9 @@ textarea {
   }
 }
 
-
+.jumbotron {
+  background-color: rgba(200,200,200,0.7);
+}
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -82,6 +89,7 @@ p {
 /* footer */
 
 footer {
+  
   margin-top: 45px;
   padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
@@ -93,10 +101,15 @@ footer {
     }
   }
   small {
-    float: left;
+    float: right;
+    font-size: 1.2em;
+    color: #ffffff;
+    a { 
+      color: #ffffff; 
+    }
   }
   ul {
-    float: right;
+    float: left;
     list-style: none;
     li {
       float: left;
@@ -302,4 +315,9 @@ span.picture {
 .schedule img{
   max-width: 100%;
   max-height: 100%;
+}
+
+/* info */
+.info {
+ background-color: rgba(200,200,200,0.9);
 }

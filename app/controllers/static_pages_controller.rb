@@ -12,10 +12,10 @@ class StaticPagesController < ApplicationController
   end
   
   def stats
-    @users = User.all
-    @memberships = Membership.all
-    @active_memberships = Membership.where("end_date > ? AND start_date <= ?", Date.today, Date.today)
-    @active_users = @memberships.map(&:user)
+    @memberships = Membership.all.unscoped
+    @active_memberships = @memberships.where("end_date > ? AND start_date <= ?", Date.today, Date.today)
+    @users = User.all.unscoped
+    @active_users = @users.joins(:memberships).where('memberships.end_date > ? AND memberships.start_date <= ?', Date.today, Date.today)
   end
   
   def prices
