@@ -17,4 +17,7 @@ class StaticPagesController < ApplicationController
     @active_memberships = Membership.where("end_date > ? AND start_date <= ?", Date.today, Date.today)
     @active_users = @memberships.map(&:user)
   end
+  
+  def prices
+  end
 end
