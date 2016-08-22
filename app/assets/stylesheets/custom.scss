@@ -167,11 +167,17 @@ aside {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, select, .uneditable-input,{
   border: 1px solid #bbb;
-  width: 100%;
+  width: auto;
+  margin-left: 50px;
+  margin-right: 50px;
   margin-bottom: 15px;
   @include box_sizing;
+}
+
+.date_field, .text_field, .number_field {
+  size: 5;
 }
 
 input {

@@ -6,6 +6,14 @@
     <a href="http://www.clubdeboxelestitans.com/" target="_blank">Club de boxe les Titans</a>
     créée par Jérôme Labonté
   </h2>
-
-  <%= link_to "Inscrivez-vous maintenant!", inscription_path, class: "btn btn-lg btn-primary" %>
+  <% if logged_in? %>
+    <% if current_user.admin? %>
+      <%= link_to "Créer un nouveau compte", inscription_path, class: "btn btn-lg btn-primary" %>
+    <% else %>
+      <%= link_to "Voir mon profil", current_user, class: "btn btn-lg btn-primary" %>
+    <% end %>
+  <% else %>
+    <%= link_to "Inscrivez-vous maintenant!", inscription_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to "Déjà membre? Connectez-vous.", connexion_path, class: "btn btn-lg btn-primary" %>
+  <% end %>
 </div>
