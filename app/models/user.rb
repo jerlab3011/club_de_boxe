@@ -1,12 +1,10 @@
 class User < ApplicationRecord
-  has_many :memberships, dependent: :destroy
   has_many :payments, dependent: :destroy
   has_many :members, dependent: :destroy
   attr_accessor :activation_token, :reset_token
   before_save   :downcase_email
-  before_create :create_activation_digest
+  before_create :create_activation_digest, :create_user_member
   before_save :default_values
-  
   default_scope -> { order(last_name: :asc) }
   
   validates :last_name,  presence: true, length: { maximum: 50 }
@@ -96,5 +94,11 @@ class User < ApplicationRecord
   def self.search(search)
     where("first_name LIKE ? OR last_name LIKE ? OR email LIKE ?", 
     "%#{search}%", "%#{search}%", "%#{search}%")
+  end
+  
+  def create_user_member
+    self.members.create!(first_name: self.first_name, last_name: self.last_name,
+    phone: self.phone, postal_code: self.postal_code, address: self.address,
+    birth_date: self.birth_date, gender: self.gender)
   end
 end

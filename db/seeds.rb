@@ -55,11 +55,12 @@ User.create(first_name: "Émilie",
                activated_at: Time.zone.now)
 end
 
-users = User.order(:created_at).take(6)
+users = User.order(:created_at).take(10)
+
 5.times do
   description = ["Illimité", "1 fois/semaine"].sample
   duration = [3, 6, 12].sample
   start_date = Faker::Date.between(2.years.ago, Date.today)
-  users.each { |user| user.memberships.create!(description: description,
+  users.each { |user| user.members.first.memberships.create!(description: description,
   duration: duration, start_date: start_date, created_by:1) }
 end

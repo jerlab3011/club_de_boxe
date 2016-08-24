@@ -1,9 +1,9 @@
-<% provide(:title, 'Tous les utilisateurs') %>
+<% provide(:title, 'Tous les comptes') %>
 <div class = "info">
-  <h1>Tous les utilisateurs</h1>
+  <h1>Tous les comptes</h1>
   
   <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-  <%= text_field_tag :search, params[:search], placeholder: "Recherche par nom ou courriel" %>
+  <%= text_field_tag :search, params[:search], placeholder: "Recherche par nom ou email" %>
   <%= submit_tag "Rechercher" %>
   <% end %>
   <%= will_paginate %>
@@ -12,7 +12,7 @@
   <% if @users.present? %>
     <%= render @users %>
   <% else %>
-    <p> Il n'y a aucun utilisateur correspondant à la recherche : <%= params[:search] %>.</p>
+    <p> Il n'y a aucun membre correspondant à la recherche : <%= params[:search] %>.</p>
   <% end %>
   </ul>
   

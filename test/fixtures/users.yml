@@ -12,6 +12,20 @@ jerome:
   total: 100.0
   activated: true
   activated_at: Time.zone.now
+  
+emilie:
+  first_name: Émilie
+  last_name: de Grandpré
+  email: emilie@example.com
+  address: Mon adresse
+  postal_code: H0H 0H0
+  phone: 514-000-0000
+  birth_date: 1900-01-01
+  gender: "F"
+  password_digest: <%= User.digest('password') %>
+  total: 100.0
+  activated: true
+  activated_at: Time.zone.now
 
 archer:
   first_name: Sterling

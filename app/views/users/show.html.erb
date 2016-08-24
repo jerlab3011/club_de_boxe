@@ -19,7 +19,7 @@
     <% if current_user.admin? && !@user.admin? %>
       <div class="row">
           <section class="membership_form">
-            <%= render 'shared/membership_form' %>
+            <!--%= render 'shared/membership_form' %-->
           </section>
       </div>
       <div class="row">
@@ -29,15 +29,7 @@
       </div>
       <% end %>
       <p> </p>Solde dû : <%= "%.2f" % @user.total %> $ </p>
-      <% if @user.memberships.any? %>
-        <div class="col-md-8">
-            <h3>Abonnements</h3>
-            <ol class="memberships">
-              <%= render @memberships %>
-            </ol>
-            <%= will_paginate @memberships %>
-        </div>
-      <% end %>
+      <%= render @members %>
       <% if @user.payments.any? %>
         <div class="col-md-8">
             <h3>Paiements</h3>

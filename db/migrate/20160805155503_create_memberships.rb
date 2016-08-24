@@ -1,7 +1,7 @@
 class CreateMemberships < ActiveRecord::Migration[5.0]
   def change
     create_table :memberships do |t|
-      t.references :user, foreign_key: true
+      t.references :member, foreign_key: true
       t.string :description
       t.float :price
       t.integer :duration
@@ -10,6 +10,6 @@ class CreateMemberships < ActiveRecord::Migration[5.0]
 
       t.timestamps
     end
-    add_index :memberships, [:user_id, :created_at]
+    add_index :memberships, [:member_id, :created_at]
   end
 end

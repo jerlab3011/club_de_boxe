@@ -13,6 +13,7 @@
 ActiveRecord::Schema.define(version: 20160823154559) do
 
   create_table "members", force: :cascade do |t|
+    t.integer  "user_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone"
@@ -22,12 +23,12 @@ ActiveRecord::Schema.define(version: 20160823154559) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.string   "gender"
-    t.integer  "user_id"
+    t.index ["user_id", "created_at"], name: "index_members_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_members_on_user_id"
   end
 
   create_table "memberships", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.string   "description"
     t.float    "price"
     t.integer  "duration"
@@ -36,8 +37,8 @@ ActiveRecord::Schema.define(version: 20160823154559) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "created_by"
-    t.index ["user_id", "created_at"], name: "index_memberships_on_user_id_and_created_at"
-    t.index ["user_id"], name: "index_memberships_on_user_id"
+    t.index ["member_id", "created_at"], name: "index_memberships_on_member_id_and_created_at"
+    t.index ["member_id"], name: "index_memberships_on_member_id"
   end
 
   create_table "payments", force: :cascade do |t|

@@ -1,7 +1,6 @@
 class Member < ApplicationRecord
   belongs_to :user
   has_many :memberships, dependent: :destroy
-  before_save :default_values
   
   default_scope -> { order(last_name: :asc) }
   

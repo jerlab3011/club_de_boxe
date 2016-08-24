@@ -13,8 +13,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @memberships = @user.memberships.paginate(page: params[:page])
-    @membership = @user.memberships.build
+    @members = @user.members.paginate(page: params[:page])
+    @member = @user.members.build
     @payments = @user.payments.paginate(page: params[:page])
     @payment = @user.payments.build
   end

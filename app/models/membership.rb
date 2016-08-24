@@ -1,10 +1,10 @@
 class Membership < ApplicationRecord
-  belongs_to :user
+  belongs_to :member
   default_scope -> { order({end_date: :desc}) }
   
   before_save :set_end_date, :set_price
   
-  validates :user_id, presence: true
+  validates :member_id, presence: true
   validates :description, presence: true, length: { maximum: 255 }
   validates :duration, presence: true  
   validates :start_date, presence: true
