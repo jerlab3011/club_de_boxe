@@ -5,14 +5,18 @@
   <span class="timestamp">
     Début : <%= membership.start_date %>
   </span>
-  <% if membership.end_date < Date.today %>
-    <span class="expired-membership">
-          Expiré le : <%= membership.end_date %>
+  <% if membership.end_date - 1.week > Date.today %>
+    <span class="active-membership">
+      Expiration : <%= membership.end_date %>
+    </span>
+  <% elsif membership.end_date > Date.today %>
+    <span class="expiring-membership">
+      Expiration : <%= membership.end_date %>
     </span>
   <% else %>
-      <span class="active-membership">
-        Expiration : <%= membership.end_date %>
-      </span>
+    <span class="expired-membership">
+      Expiré le : <%= membership.end_date %>
+    </span>
   <% end %>
   <span class="timestamp">
     Créé le <%= membership.created_at %>.

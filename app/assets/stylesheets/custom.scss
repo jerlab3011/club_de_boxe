@@ -297,31 +297,11 @@ input {
     color: #00ff00;
     display: inline-block;
   }
-  .expired-membership {
-    color: #ff0000;
-    display: block;
-    margin-left: 60px;
-  }  
+ 
   .expiring-membership {
     color: #ffff00;
-    display: inline;
-    margin-left: 60px;
+    display: inline-block;
   }  
-  .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
-  }
-  .price {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
-  }
-  .creator {
-    color: $gray-light;
-    display: block;
-    margin-left: 60px;
-  }
 }
 
 aside {
