@@ -41,7 +41,7 @@ User.create(first_name: "Émilie",
   date = Faker::Date.between(70.year.ago, 6.years.ago)
   address = Faker::Address.street_address
   
-  User.create!(first_name:  first_name,
+  @user = User.create!(first_name:  first_name,
                last_name: last_name,
                email: email,
                phone: phone,
@@ -53,14 +53,24 @@ User.create(first_name: "Émilie",
                password_confirmation: password,
                activated: true,
                activated_at: Time.zone.now)
+  @user.members.build(first_name:  first_name,
+               last_name: last_name,
+               phone: phone,
+               address: address,
+               postal_code: "H0H 0H0",
+               birth_date: date,
+               gender: "M")
+  @user.save
+               
 end
 
 users = User.order(:created_at).take(10)
 
+
 5.times do
   description = ["Illimité", "1 fois/semaine"].sample
   duration = [3, 6, 12].sample
-  start_date = Faker::Date.between(2.years.ago, Date.today)
+ start_date = Faker::Date.between(2.years.ago, Date.today)
   users.each { |user| user.members.first.memberships.create!(description: description,
   duration: duration, start_date: start_date, created_by:1) }
 end
