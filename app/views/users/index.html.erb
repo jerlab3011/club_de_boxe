@@ -1,7 +1,9 @@
 <% provide(:title, 'Tous les comptes') %>
 <div class = "info">
   <h1>Tous les comptes</h1>
-  
+  <div class = "center">
+  <%= link_to "Créer un nouveau compte", inscription_path, class: "btn btn-lg btn-primary" %>
+  </div>
   <%= form_tag(users_path, :method => "get", id: "search-form") do %>
   <%= text_field_tag :search, params[:search], placeholder: "Recherche par nom ou email" %>
   <%= submit_tag "Rechercher" %>

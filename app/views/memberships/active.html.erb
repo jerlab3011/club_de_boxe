@@ -1,22 +1,23 @@
 <% provide(:title, 'Abonnements actifs') %>
-<div class = "info">
+<div class = "row info">
   <h1>Abonnements actifs (<%= @memberships.count %>)</h1>
-  
-  <ul class="memberships">
-    <% @memberships.each do |membership| %>
-    <li id="membership-<%= membership.id %>">
-    <span class="user"><%= link_to membership.user.full_name, membership.user %></span>
-    <span class="description"><%= membership.description %></span>
-    <% if membership.end_date - 1.week > Date.today %>
-      <span class="active-membership">
-        Expiration : <%= membership.end_date %>
-      </span>
-    <% else %>
-      <span class="expiring-membership">
-        Expiration : <%= membership.end_date %>
-      </span>
-    <% end %>
-    </li>
-    <% end %>
-  </ul>
+  <div class="col-md-8">
+    <ul class="active-memberships">
+      <% @memberships.each do |membership| %>
+        <li id="membership-<%= membership.id %>">
+          <span class="user"><%= link_to membership.member.full_name, membership.member %></span>
+          <span class="description"><%= membership.description %></span>
+          <% if membership.end_date - 1.week > Date.today %>
+            <span class="active-membership">
+              Expiration : <%= membership.end_date %>
+            </span>
+          <% else %>
+            <span class="expiring-membership">
+              Expiration : <%= membership.end_date %>
+            </span>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

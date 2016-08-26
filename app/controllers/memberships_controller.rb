@@ -29,7 +29,7 @@ class MembershipsController < ApplicationController
   
   def active
     @memberships = Membership.where("end_date > ? AND start_date <= ?", Date.today, Date.today)
-    @memberships = @memberships.sort_by {|member| member.user.last_name}
+    @memberships = @memberships.sort_by {|membership| membership.member.last_name}
   end
   
   private

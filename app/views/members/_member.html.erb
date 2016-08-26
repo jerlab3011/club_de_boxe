@@ -1,7 +1,3 @@
 <li>
-  <%= link_to member.full_name, member %>
-  <% if current_user.admin?%>
-    | <%= link_to "supprimer", member, method: :delete,
-                                  data: { confirm: "Êtes vous certain de vouloir supprimer ce membre ?" } %>
-  <% end %>
+  <%= link_to member.full_name, member %>, Responsable : (<%= link_to member.user.full_name, member.user %>)
 </li>

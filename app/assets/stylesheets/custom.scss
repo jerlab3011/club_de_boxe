@@ -271,6 +271,59 @@ input {
   }
 }
 
+/* active memberships */
+
+.active-memberships {
+  list-style: none;
+  padding: 0;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    padding-top: 0;
+    display: inline-block;
+    width: 25em;
+  }
+  .description {
+    display: inline-block;
+    width: 15em;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .active-membership {
+    color: #00ff00;
+    display: inline-block;
+  }
+  .expired-membership {
+    color: #ff0000;
+    display: block;
+    margin-left: 60px;
+  }  
+  .expiring-membership {
+    color: #ffff00;
+    display: inline;
+    margin-left: 60px;
+  }  
+  .timestamp {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .price {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+  .creator {
+    color: $gray-light;
+    display: block;
+    margin-left: 60px;
+  }
+}
+
 aside {
   textarea {
     height: 100px;
