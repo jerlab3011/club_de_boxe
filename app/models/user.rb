@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :members, dependent: :destroy
   attr_accessor :activation_token, :reset_token
   before_save   :downcase_email
-  before_create :create_activation_digest, :create_user_member
+  before_create :create_activation_digest
   before_save :default_values
   default_scope -> { order(last_name: :asc) }
   

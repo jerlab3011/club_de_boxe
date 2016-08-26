@@ -17,6 +17,10 @@ class Membership < ApplicationRecord
   end
   
   def set_price
+    @member = Member.find(self.member_id)
+    if @member.birth_date > (self.start_date - 18.years)
+      self.description = self.description + " (jeune)"
+    end
     if self.duration == 3 && self.description == "Illimité"
       self.price = 120
     elsif self.duration == 3 && self.description == "1 fois/semaine"
@@ -29,6 +33,18 @@ class Membership < ApplicationRecord
       self.price = 400
     elsif self.duration == 12 && self.description == "1 fois/semaine"
       self.price = 200
+    elsif self.duration == 3 && self.description == "Illimité (jeune)"
+      self.price = 85
+    elsif self.duration == 3 && self.description == "1 fois/semaine (jeune)"
+      self.price = 60
+    elsif self.duration == 6 && self.description == "Illimité (jeune)"
+      self.price = 150
+    elsif self.duration == 6 && self.description == "1 fois/semaine (jeune)"
+      self.price = 100
+    elsif self.duration == 12 && self.description == "Illimité (jeune)"
+      self.price = 250
+    elsif self.duration == 12 && self.description == "1 fois/semaine (jeune)"
+      self.price = 170
     end
   end
   

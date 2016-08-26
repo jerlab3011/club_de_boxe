@@ -170,10 +170,17 @@ aside {
 input, textarea, select, .uneditable-input,{
   border: 1px solid #bbb;
   width: auto;
-  margin-left: 50px;
-  margin-right: 50px;
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 15px;
   @include box_sizing;
+}
+
+label{
+  width: 10em;
+  float: left;
+  text-align: right;
+  margin-right: 0.5em;
 }
 
 .date_field, .text_field, .number_field {

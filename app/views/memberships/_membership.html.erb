@@ -1,5 +1,5 @@
 <li id="membership-<%= membership.id %>">
-  <span class="user"><%= link_to membership.user.full_name, membership.user %></span>
+  <span class="user"><%= link_to membership.member.full_name, membership.member %></span>
   <span class="description"><%= membership.description %>, <%= membership.duration %> mois</span>
   <span class="price"><%= "%.2f" % membership.price %> $</span>
   <span class="timestamp">

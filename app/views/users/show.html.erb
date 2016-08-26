@@ -1,43 +1,55 @@
-
+<% provide(:button_text, 'Créer membre') %>
 <% provide(:title, @user.full_name) %>
 <div class="row info">
-  
-    <section class="center user_info">
-      <h1><%= @user.full_name %> <%= "(administrateur)" unless !@user.admin? %> </h1>
+  <section class="center user_info">
+    <h1><%= @user.full_name %> <%= "(administrateur)" unless !@user.admin? %> </h1>
+    <% if current_user.admin? && (current_user?(@user) || !@user.admin?) %>
       <%= link_to "Modifier", edit_user_path(@user) %>
-      <% if !@user.admin? %>
-      <% if current_user.admin? && !current_user?(@user) %>
-        | <%= link_to "supprimer", @user, method: :delete,
-           data: { confirm: "Êtes vous certain de vouloir supprimer ce compte ?" } %>
-      <% end %>
+      | <%= link_to "supprimer", @user, method: :delete,
+          data: { confirm: "Êtes vous certain de vouloir supprimer ce compte ?" } %>
+    <% end %>
+    <% if !@user.admin? %>
       <p> Adresse : <%= @user.address %>, <%= @user.postal_code %> </p>
       <p> Téléphone : <%= @user.phone %> </p>
       <p> Date de naissance : <%= @user.birth_date %> </p>
       <p> Sexe : <%= @user.gender %> </p>
       <p> Membre depuis : <%= @user.created_at %> </p>
-    </section>
-    <% if current_user.admin? && !@user.admin? %>
-      <div class="row">
-          <section class="membership_form">
-            <!--%= render 'shared/membership_form' %-->
-          </section>
-      </div>
-      <div class="row">
-          <section class="payment_form">
-            <%= render 'shared/payment_form' %>
-          </section>
-      </div>
-      <% end %>
-      <p> </p>Solde dû : <%= "%.2f" % @user.total %> $ </p>
+      <h3> Solde dû : <%= "%.2f" % @user.total %> $ </h3>
+  </section>
+  <div class="col-md-8">
+    <h3>Membres <%= "(Choisir un membre pour ajouter un abonnement)" unless !@current_user.admin? %></h3>
+    <ol class="payments">
       <%= render @members %>
-      <% if @user.payments.any? %>
-        <div class="col-md-8">
-            <h3>Paiements</h3>
-            <ol class="payments">
-              <%= render @payments %>
-            </ol>
-            <%= will_paginate @payments %>
-        </div>
-      <% end %>
-    <% end %>
+    </ol>
+  </div>
+  <div class="col-md-8">
+    <h3>Nouveau membre</h3>
+    <%= render 'member_form' %>
+  </div>
+  <% if @user.payments.any? %>
+    <div class="col-md-8">
+      <h3>Paiements</h3>
+      <ol class="payments">
+        <%= render @payments %>
+      </ol>
+      <%= will_paginate @payments %>
+    </div>
+  <% end %>
+  <% if current_user.admin? && !@user.admin? %>
+    <div class="col-md-8">
+      <h3>Nouveau paiment</h3>
+      <section class="payment_form">
+        <%= render 'shared/payment_form' %>
+      </section>
+    </div>
+  <% end %>
+    <div class="col-md-8">
+      <h3>Abonnements</h3>
+      <ol class="memberships">
+        <% @members.each do |member| %>
+          <%= render member.memberships %>
+        <% end %>
+      </ol>
+    </div>
+  <% end %>
 </div>

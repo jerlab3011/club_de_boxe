@@ -28,6 +28,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.send_activation_email
       flash[:info] = "Svp veuillez vérifier vos courriels pour activer votre compte. Cela peut prendre quelques minutes."
+      @user.create_user_member
       redirect_to root_url
     else
       render 'new'

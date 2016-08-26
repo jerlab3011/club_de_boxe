@@ -1,5 +1,7 @@
-<%= form_for(@user) do |f| %>
+<%= form_for(@member) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  <div> <%= hidden_field_tag :user_id, @user.id %> </div>
+  
   <div class="form-inline">
     <%= f.label :first_name, "Prénom" %>
     <%= f.text_field :first_name, class: 'form-control' %>
@@ -9,25 +11,19 @@
     <%= f.label :last_name, "Nom" %>
     <%= f.text_field :last_name, class: 'form-control' %>
   </div>
-  
-  <div class="form-inline">
-    <%= f.label :email, "Courriel" %>
-    <%= f.email_field :email, class: 'form-control' %>
-  </div>
-  
+
   <div class="form-inline">
     <%= f.label :address, "Adresse" %>
-    <%= f.text_field :address, class: 'form-control' %>
+    <%= f.text_field :address, :value => @user.address, class: 'form-control' %>
   </div>
-  
   <div class="form-inline">
     <%= f.label :postal_code, "Code postal" %>
-    <%= f.text_field :postal_code, class: 'form-control' %>
+    <%= f.text_field :postal_code, :value => @user.postal_code, class: 'form-control' %>
   </div>
   
   <div class="form-inline">
     <%= f.label :phone, "Téléphone" %>
-    <%= f.text_field :phone, class: 'form-control' %>
+    <%= f.text_field :phone, :value => @user.phone, class: 'form-control' %>
   </div>
   
   <div class="form-inline">
@@ -41,16 +37,6 @@
   <div class="form-inline">
     <%= f.label :birth_date, "Date de naissance" %>
     <%= f.date_field :birth_date, class: 'form-control' %>
-  </div>
-  
-  <div class="form-inline">
-    <%= f.label :password, "Mot de passe" %>
-    <%= f.password_field :password , class: 'form-control' %>
-  </div>
-  
-  <div class="form-inline">
-    <%= f.label :password_confirmation, "Confirmation" %>
-    <%= f.password_field :password_confirmation, class: 'form-control' %>
   </div>
   
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>

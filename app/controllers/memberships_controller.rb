@@ -4,21 +4,23 @@ class MembershipsController < ApplicationController
   
 
   def create
-    @user = User.find(params[:user_id])
-    @membership = @user.memberships.build(membership_params)
+    @member = Member.find(params[:member_id])
+    @user = User.find(@member.user_id)
+    @membership = @member.memberships.build(membership_params)
     if @membership.save
       flash[:success] = "Abonnement créé!"
       @membership.update_column("created_by", current_user.id)
       @user.update_column("total", @user.total + @membership.reload.price)
       redirect_to @user
     else
-      redirect_to @user
+      redirect_to @member
     end
   end
 
   def destroy
     @membership = Membership.find(params[:id])
-    @user = User.find(@membership.user_id)
+    @member = Member.find(@membership.member_id)
+    @user = User.find(@member.user_id)
     @user.update_column("total", @user.total - @membership.price)
     @membership.destroy
     flash[:success] = "Abonnement supprimé"

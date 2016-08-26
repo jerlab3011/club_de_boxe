@@ -1,15 +1,13 @@
 <%= form_for(@payment) do |f| %>
   <div><%= hidden_field_tag :user_id, @user.id %></div>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="col-md-6 col-md-offset-1">
-    <div class="form-inline">
+  <div class="form-inline">
     <%= f.label :description, "Type de paiement" %>
     <%= f.text_field :description, class: 'form-control' %>
-    </div>
-    <div class="form-inline">
+  </div>
+  <div class="form-inline">
     <%= f.label :amount, "Montant" %>
     <%= f.number_field :amount, :class => 'text_field', :step => 'any', class: 'form-control'%>
-    </div>
-    <%= f.submit "Enregistrer paiement", class: "btn btn-primary" %>
   </div>
+    <%= f.submit "Enregistrer paiement", class: "btn btn-primary" %>
 <% end %>
