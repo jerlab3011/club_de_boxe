@@ -3,7 +3,7 @@ require 'test_helper'
 class MembershipTest < ActiveSupport::TestCase
   def setup
     @user = users(:emilie)
-    @user.members.build(first_name: "FirstName",last_name:"LastName", birth_date: "2008-08-20", phone: "514-345-5678",
+    @user.members.build(first_name: "FirstName",last_name:"LastName", birth_date: "1900-08-20", phone: "514-345-5678",
     postal_code: "H2P 2G3", address: "1234 marquette", gender:"M")
     @user.save
     @member = @user.members.first

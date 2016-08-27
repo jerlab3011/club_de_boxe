@@ -6,7 +6,9 @@ class MembersControllerTest < ActionDispatch::IntegrationTest
     @admin = users(:jerome)
     @user = users(:emilie)
     @other_user = users(:archer)
-    @member = @user.members.first
+    @member = @user.members.build(first_name: "FirstName",last_name:"LastName", birth_date: "1900-08-20", phone: "514-345-5678",
+    postal_code: "H2P 2G3", address: "1234 marquette", gender:"M")
+    @user.save
   end
 
   test "should get edit when logged in as admin" do

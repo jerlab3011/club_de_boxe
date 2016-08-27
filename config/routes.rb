@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   get '/abonnements_actifs', to: 'memberships#active'
   get '/tarifs', to: 'static_pages#prices'
   resources :users
-  resources :members, only: [:edit, :show, :index, :create, :update]
+  resources :members, only: [:edit, :show, :index, :create, :update, :destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :memberships,         only: [:create, :destroy]

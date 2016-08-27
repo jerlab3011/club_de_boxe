@@ -1,3 +1,7 @@
-User#expiration_reminder
+Bonjour <%= @user.first_name%>
 
-<%= @greeting %>, find me in app/views/user_mailer/expiration_reminder.text.erb
+Ceci est un courriel automatisé pour vous rappeler que l'abonnement de 
+<%= @member.first_name %> <%= @member.last_name %> se termine le <%= @membership.end_date %>
+
+Nous vous rappelons que vous pouvez voir l'état de vos abonnements en tout temps en 
+vous connectant au <% "http://www.clubdeboxelestitans.com" %>
