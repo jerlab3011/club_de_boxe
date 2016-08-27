@@ -23,8 +23,10 @@
     </ol>
   </div>
   <div class="col-md-8">
-    <h3>Nouveau membre</h3>
-    <%= render 'shared/member_form' %>
+    <details>
+      <summary>Nouveau membre</summary>
+      <%= render 'shared/member_form' %>
+    </details>
   </div>
   <% if @user.payments.any? %>
     <div class="col-md-8">
@@ -37,10 +39,12 @@
   <% end %>
   <% if current_user.admin? && !@user.admin? %>
     <div class="col-md-8">
-      <h3>Nouveau paiment</h3>
+      <details>
+      <summary>Nouveau paiment</summary>
       <section class="payment_form">
         <%= render 'shared/payment_form' %>
       </section>
+      </details>
     </div>
   <% end %>
     <div class="col-md-8">
