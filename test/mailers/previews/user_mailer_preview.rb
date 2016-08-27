@@ -23,7 +23,8 @@ class UserMailerPreview < ActionMailer::Preview
 
   # Preview this email at http://localhost:3000/rails/mailers/user_mailer/expiration_reminder
   def expiration_reminder
-    UserMailer.expiration_reminder
+    membership = Membership.first
+    UserMailer.expiration_reminder(membership)
   end
 
 end
