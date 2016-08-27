@@ -36,9 +36,10 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.expiration_reminder.subject
   #
-  def expiration_reminder
-    @greeting = "Hi"
-
-    mail to: "to@example.org"
+  def expiration_reminder(membership)
+    @membership = membership
+    @member = @membership.member
+    @user = @member.user
+    mail to: @user.email, subject: "Rappel : Expiration de votre abonnement"
   end
 end

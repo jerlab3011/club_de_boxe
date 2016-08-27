@@ -48,4 +48,8 @@ class Membership < ApplicationRecord
     end
   end
   
+  def send_expiration_reminder_email
+    UserMailer.expiration_reminder(self).deliver_now
+  end
+  
 end

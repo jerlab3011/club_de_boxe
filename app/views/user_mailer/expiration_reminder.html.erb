@@ -1,5 +1,9 @@
-<h1>User#expiration_reminder</h1>
+<h1>Rappel : expiration de votre abonnement</h1>
+<p>Bonjour <%= @user.first_name%>,</p>
 
+<p>Ceci est un courriel automatisé pour vous rappeler que l'abonnement de 
+<%= @member.first_name %> <%= @member.last_name %> se termine le <%= @membership.end_date %></p>
 <p>
-  <%= @greeting %>, find me in app/views/user_mailer/expiration_reminder.html.erb
+  Nous vous rappelons que vous pouvez voir l'état de vos abonnements en tout temps en 
+  vous connectant au <%= link_to "site du Club de boxe les Titants", "http://www.clubdeboxelestitans.com" %>
 </p>
