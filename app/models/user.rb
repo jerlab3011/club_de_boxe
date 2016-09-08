@@ -101,4 +101,15 @@ class User < ApplicationRecord
     phone: self.phone, postal_code: self.postal_code, address: self.address,
     birth_date: self.birth_date, gender: self.gender)
   end
+  
+  def self.to_csv
+    attributes = %w{id email first_name last_name address}
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+      
+      all.each do |user|
+        csv << user.attributes.values_at(*attributes)
+      end
+    end
+  end
 end

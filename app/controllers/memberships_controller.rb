@@ -2,7 +2,14 @@ class MembershipsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy, :index]
   before_action :admin_user,     only: [:create, :destroy, :index]
   
-
+  def index
+    @memberships = Membership.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @memberships.to_csv }
+    end
+  end
+  
   def create
     @member = Member.find(params[:member_id])
     @user = User.find(@member.user_id)

@@ -9,6 +9,12 @@ class UsersController < ApplicationController
     else  
       @users = User.paginate(page: params[:page])
     end
+    @all_users = User.all
+    respond_to do |format|
+      format.html
+      format.csv { send_data @all_users.to_csv }
+    end
+      
   end
 
   def show

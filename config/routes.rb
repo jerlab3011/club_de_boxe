@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   resources :members, only: [:edit, :show, :index, :create, :update, :destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :memberships,         only: [:create, :destroy]
+  resources :memberships,         only: [:create, :destroy, :index]
   resources :payments,            only: [:create, :destroy]
 end

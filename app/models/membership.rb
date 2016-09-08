@@ -52,4 +52,22 @@ class Membership < ApplicationRecord
     UserMailer.expiration_reminder(self).deliver_now
   end
   
+  def self.to_csv
+    attributes = %w{id member_full_name description duration start_date end_date price user_full_name}
+    CSV.generate(headers:true) do |csv|
+      csv << attributes
+      
+      all.each do |membership|
+        csv << attributes.map{ |attr| membership.send(attr) }
+      end
+    end
+  end
+  
+  def member_full_name
+    self.member.full_name
+  end
+  
+  def user_full_name
+    self.member.user.full_name
+  end
 end
